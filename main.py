@@ -1,4 +1,4 @@
-import json, io
+import json, io, re
 
 
 
@@ -47,8 +47,31 @@ take_value_2 = var[0]['source']['userId']
 result:
 Udeadbeefdeadbeefdeadbeefdeadbeef
 """
+take_value_3 = var[0]['message']['text']
 
-print(take_value_2)
+
+
+
+#組裝json值成字串與切割
+user_content = take_value_2 + ":" + take_value_3
+user_content_text = str(user_content)
+
+
+
+print(user_content)
+print(user_content_text)
+
+
+split_list = re.split(':',user_content)
+split_list_text = re.split(':',user_content_text)
+print(split_list)
+print(split_list_text)
+
 f.close()
+
+
+f1 = open('text.txt', 'wt', encoding = 'UTF-8')
+f1.writelines(split_list_text)
+f1.close()
 
 
